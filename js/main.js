@@ -280,20 +280,24 @@ const ContactForm = {
 
         if (!isValid) return;
 
-        // Simulate form submission
-        const submitBtn = this.form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
+        // Construct mailto link
+        const recipientEmail = 'philipwkramer@gmail.com';
+        const subject = `PHILIP KRAMER ACTING SITE FORM SUBMISSION: ${data.name}`;
+        const body = `Name: ${data.name}
+Email: ${data.email}
+Subject: ${data.subject}
 
-        // Simulate API call
-        setTimeout(() => {
-            console.log('Form data:', data);
-            this.showSuccess();
-            this.form.reset();
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }, 1500);
+Message:
+${data.message}`;
+
+        const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Open email client
+        window.location.href = mailtoLink;
+
+        // Show success message and reset form
+        this.showSuccess();
+        this.form.reset();
     },
 
     validateField(field) {
