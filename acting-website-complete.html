@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional actor portfolio showcasing film, television, and theater work">
+    <title>Actor Name | Professional Actor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+/* ===== CSS VARIABLES ===== */
+:root {
+    --color-primary: #1a1a2e;
+    --color-secondary: #16213e;
+    --color-accent: #c9a959;
+    --color-accent-dark: #a8893d;
+    --color-text: #333;
+    --color-text-light: #666;
+    --color-text-white: #fff;
+    --color-bg-light: #f8f8f8;
+    --color-bg-dark: #0f0f1a;
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Raleway', 'Helvetica Neue', sans-serif;
+    --transition: all 0.3s ease;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--color-text);
+    background-color: var(--color-text-white);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ===== UTILITIES ===== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section {
+    padding: 6rem 0;
+}
+
+.section-dark {
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.title-underline {
+    width: 60px;
+    height: 3px;
+    background: var(--color-accent);
+    margin-bottom: 2rem;
+}
+
+.title-underline.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+}
+
+.section-dark .btn-secondary {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.section-dark .btn-secondary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* ===== NAVIGATION ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    transition: var(--transition);
+}
+
+.navbar.scrolled {
+    background-color: rgba(26, 26, 46, 0.98);
+    padding: 1rem 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-white);
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-link {
+    color: var(--color-text-white);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger {
+    position: relative;
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-text-white);
+    transition: var(--transition);
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-text-white);
+    transition: var(--transition);
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+.nav-toggle.active .hamburger {
+    background-color: transparent;
+}
+
+.nav-toggle.active .hamburger::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-toggle.active .hamburger::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(26, 26, 46, 0.7) 0%,
+        rgba(22, 33, 62, 0.8) 100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 2rem;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--color-text-white);
+    margin-bottom: 1rem;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--color-accent);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    animation: fadeInUp 1s ease 0.3s forwards;
+    opacity: 0;
+}
+
+.hero .btn {
+    animation: fadeInUp 1s ease 0.6s forwards;
+    opacity: 0;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: var(--color-text-white);
+    opacity: 0.7;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+}
+
+.scroll-arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid var(--color-text-white);
+    border-bottom: 2px solid var(--color-text-white);
+    transform: rotate(45deg);
+    margin: 0 auto;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+}
+
+.image-placeholder {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-white);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.image-placeholder.headshot {
+    aspect-ratio: 3/4;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+}
+
+.about-text .lead {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    color: var(--color-text-light);
+}
+
+.about-stats {
+    display: flex;
+    gap: 3rem;
+    margin: 2.5rem 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-light);
+}
+
+/* ===== RESUME SECTION ===== */
+.resume-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.resume-category {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.category-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.credits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.credit-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.credit-item:last-child {
+    border-bottom: none;
+}
+
+.credit-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.25rem;
+}
+
+.credit-title {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.credit-role {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    font-style: italic;
+}
+
+.credit-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.training-list .credit-main {
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.training-list .credit-role {
+    color: rgba(255, 255, 255, 0.6);
+    font-style: normal;
+    font-size: 0.85rem;
+}
+
+.resume-download {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* ===== REEL SECTION ===== */
+.reel-container {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+}
+
+.video-placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-white);
+}
+
+.play-button {
+    width: 80px;
+    height: 80px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 1rem;
+}
+
+.play-button svg {
+    width: 30px;
+    height: 30px;
+    color: var(--color-primary);
+    margin-left: 5px;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(201, 169, 89, 0.5);
+}
+
+.video-placeholder span {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.video-note {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+}
+
+.additional-reels h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+}
+
+.clips-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.clip-card {
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.clip-card:hover {
+    transform: translateY(-5px);
+}
+
+.clip-thumbnail {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-white);
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.play-button-small {
+    width: 50px;
+    height: 50px;
+    background: rgba(201, 169, 89, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.play-button-small svg {
+    width: 20px;
+    height: 20px;
+    color: var(--color-primary);
+    margin-left: 3px;
+}
+
+.clip-thumbnail span {
+    font-size: 0.9rem;
+}
+
+.clip-title {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+/* ===== GALLERY SECTION ===== */
+.gallery-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.6rem 1.5rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--color-text-white);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-primary);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.gallery-item {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.1);
+}
+
+.gallery-img {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #2a2a4a 0%, #1a1a3a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-white);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.gallery-item.hidden {
+    display: none;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 2rem;
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info > p {
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+}
+
+.representation {
+    margin-bottom: 2rem;
+}
+
+.representation h4,
+.social-links h4 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+}
+
+.rep-card {
+    background: var(--color-bg-light);
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.rep-card h5 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+}
+
+.rep-name {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.rep-agency {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+.rep-contact {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.social-icon:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: translateY(-3px);
+}
+
+.contact-form-wrapper {
+    background: var(--color-bg-light);
+    padding: 2.5rem;
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: var(--transition);
+    background: var(--color-text-white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(201, 169, 89, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--color-bg-dark);
+    color: var(--color-text-white);
+    padding: 4rem 0 2rem;
+    text-align: center;
+}
+
+.footer-logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-social a {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    transition: var(--transition);
+}
+
+.footer-social a:hover {
+    color: var(--color-accent);
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    background: transparent;
+    border: none;
+    color: var(--color-text-white);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 1rem;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.lightbox-close {
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+}
+
+.lightbox-prev {
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+}
+
+.lightbox-next {
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    color: var(--color-accent);
+}
+
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 90vh;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-white);
+    padding: 3rem;
+    font-size: 1.5rem;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+    .resume-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .clips-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--color-primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: var(--transition);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+        letter-spacing: 4px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 4px;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .about-stats {
+        justify-content: space-around;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .clips-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .section {
+        padding: 4rem 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+        letter-spacing: 3px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+    }
+
+    .about-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .gallery-filter {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .rep-card {
+        padding: 1rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 1.5rem;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== SELECTION ===== */
+::selection {
+    background: var(--color-accent);
+    color: var(--color-primary);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-dark);
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Actor Name</a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#resume" class="nav-link">Resume</a></li>
+                <li class="nav-item"><a href="#reel" class="nav-link">Reel</a></li>
+                <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Actor Name</h1>
+            <p class="hero-subtitle">Film | Television | Theater</p>
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-placeholder headshot">
+                        <span>Headshot</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="title-underline"></div>
+                    <p class="lead">A passionate and versatile performer bringing authentic characters to life.</p>
+                    <p>With training from [Acting School/Program] and years of experience across film, television, and theater, I bring depth, authenticity, and commitment to every role. My approach combines classical technique with contemporary naturalism, allowing me to inhabit characters across genres and mediums.</p>
+                    <p>Based in [City], I am represented by [Agency Name] and am available for both local and international productions. I am fluent in [languages] and skilled in [special skills like accents, combat, dance, etc.].</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Productions</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Awards</span>
+                        </div>
+                    </div>
+                    <a href="#resume" class="btn btn-secondary">View Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume section section-dark">
+        <div class="container">
+            <h2 class="section-title text-center">Resume</h2>
+            <div class="title-underline center"></div>
+
+            <div class="resume-grid">
+                <!-- Film Credits -->
+                <div class="resume-category">
+                    <h3 class="category-title">Film</h3>
+                    <div class="credits-list">
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">Film Title</span>
+                                <span class="credit-role">Lead Role</span>
+                            </div>
+                            <div class="credit-details">
+                                <span class="credit-director">Dir. Director Name</span>
+                                <span class="credit-production">Production Company</span>
+                            </div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">Another Film</span>
+                                <span class="credit-role">Supporting</span>
+                            </div>
+                            <div class="credit-details">
+                                <span class="credit-director">Dir. Director Name</span>
+                                <span class="credit-production">Studio Name</span>
+                            </div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">Feature Film</span>
+                                <span class="credit-role">Co-Star</span>
+                            </div>
+                            <div class="credit-details">
+                                <span class="credit-director">Dir. Director Name</span>
+                                <span class="credit-production">Independent</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Television Credits -->
+                <div class="resume-category">
+                    <h3 class="category-title">Television</h3>
+                    <div class="credits-list">
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">TV Series Name</span>
+                                <span class="credit-role">Recurring</span>
+                            </div>
+                            <div class="credit-details">
+                                <span class="credit-director">Showrunner Name</span>
+                                <span class="credit-production">Network/Streaming</span>
+                            </div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">Drama Series</span>
+                                <span class="credit-role">Guest Star</span>
+                            </div>
+                            <div class="credit-details">
+                                <span class="credit-director">Various Directors</span>
+                                <span class="credit-production">Network</span>
+                            </div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">Limited Series</span>
+                                <span class="credit-role">Series Regular</span>
+                            </div>
+                            <div class="credit-details">
+                                <span class="credit-director">Dir. Director Name</span>
+                                <span class="credit-production">Streaming Platform</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theater Credits -->
+                <div class="resume-category">
+                    <h3 class="category-title">Theater</h3>
+                    <div class="credits-list">
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">Play Title</span>
+                                <span class="credit-role">Lead</span>
+                            </div>
+                            <div class="credit-details">
+                                <span class="credit-director">Dir. Director Name</span>
+                                <span class="credit-production">Theater Name</span>
+                            </div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">Shakespeare Play</span>
+                                <span class="credit-role">Title Role</span>
+                            </div>
+                            <div class="credit-details">
+                                <span class="credit-director">Dir. Director Name</span>
+                                <span class="credit-production">Rep Theater</span>
+                            </div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">Musical Title</span>
+                                <span class="credit-role">Ensemble</span>
+                            </div>
+                            <div class="credit-details">
+                                <span class="credit-director">Dir. Director Name</span>
+                                <span class="credit-production">Regional Theater</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training -->
+                <div class="resume-category">
+                    <h3 class="category-title">Training</h3>
+                    <div class="credits-list training-list">
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">MFA Acting</span>
+                                <span class="credit-role">University/Conservatory Name</span>
+                            </div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">Scene Study</span>
+                                <span class="credit-role">Teacher Name, Studio</span>
+                            </div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">Voice & Movement</span>
+                                <span class="credit-role">Instructor Name</span>
+                            </div>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-main">
+                                <span class="credit-title">On-Camera Technique</span>
+                                <span class="credit-role">Studio Name</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resume-download">
+                <a href="#" class="btn btn-primary">Download Full Resume (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Reel Section -->
+    <section id="reel" class="reel section">
+        <div class="container">
+            <h2 class="section-title text-center">Demo Reel</h2>
+            <div class="title-underline center"></div>
+
+            <div class="reel-container">
+                <div class="video-wrapper">
+                    <div class="video-placeholder">
+                        <div class="play-button">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <span>Demo Reel Video</span>
+                        <p class="video-note">Replace with your YouTube/Vimeo embed or video file</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="additional-reels">
+                <h3>Additional Clips</h3>
+                <div class="clips-grid">
+                    <div class="clip-card">
+                        <div class="clip-thumbnail">
+                            <div class="play-button-small">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                            <span>Dramatic Scene</span>
+                        </div>
+                        <p class="clip-title">Film Title - Scene Description</p>
+                    </div>
+                    <div class="clip-card">
+                        <div class="clip-thumbnail">
+                            <div class="play-button-small">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                            <span>Comedy Clip</span>
+                        </div>
+                        <p class="clip-title">TV Show - Comedic Scene</p>
+                    </div>
+                    <div class="clip-card">
+                        <div class="clip-thumbnail">
+                            <div class="play-button-small">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                            <span>Theater Performance</span>
+                        </div>
+                        <p class="clip-title">Play Title - Monologue</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section section-dark">
+        <div class="container">
+            <h2 class="section-title text-center">Gallery</h2>
+            <div class="title-underline center"></div>
+
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="headshots">Headshots</button>
+                <button class="filter-btn" data-filter="production">Production Stills</button>
+                <button class="filter-btn" data-filter="behind">Behind the Scenes</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="headshots">
+                    <div class="image-placeholder gallery-img">
+                        <span>Headshot 1</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="headshots">
+                    <div class="image-placeholder gallery-img">
+                        <span>Headshot 2</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="production">
+                    <div class="image-placeholder gallery-img">
+                        <span>Production Still 1</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="production">
+                    <div class="image-placeholder gallery-img">
+                        <span>Production Still 2</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="behind">
+                    <div class="image-placeholder gallery-img">
+                        <span>Behind the Scenes 1</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="headshots">
+                    <div class="image-placeholder gallery-img">
+                        <span>Headshot 3</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="production">
+                    <div class="image-placeholder gallery-img">
+                        <span>Production Still 3</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="behind">
+                    <div class="image-placeholder gallery-img">
+                        <span>Behind the Scenes 2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title text-center">Contact</h2>
+            <div class="title-underline center"></div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>For booking inquiries, auditions, or general questions, please reach out through my representation or use the contact form.</p>
+
+                    <div class="representation">
+                        <h4>Representation</h4>
+                        <div class="rep-card">
+                            <h5>Theatrical Agent</h5>
+                            <p class="rep-name">Agent Name</p>
+                            <p class="rep-agency">Agency Name</p>
+                            <p class="rep-contact">agent@agency.com</p>
+                            <p class="rep-contact">(555) 123-4567</p>
+                        </div>
+                        <div class="rep-card">
+                            <h5>Commercial Agent</h5>
+                            <p class="rep-name">Agent Name</p>
+                            <p class="rep-agency">Commercial Agency</p>
+                            <p class="rep-contact">commercial@agency.com</p>
+                            <p class="rep-contact">(555) 987-6543</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <h4>Follow Me</h4>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Twitter/X">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="IMDb">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14.31 9.588v.005c-.077-.048-.227-.07-.42-.07v4.815c.27 0 .44-.06.5-.165.062-.104.095-.405.095-.907v-2.666c0-.397-.015-.645-.053-.747a.312.312 0 00-.122-.265zM22.416 0H1.62C.742.06.06.744 0 1.596V22.38c.06.874.742 1.556 1.62 1.62h20.796c.9-.06 1.56-.744 1.62-1.62V1.62C24 .72 23.295.06 22.416 0zM4.792 15.626H2.887V8.26h1.905v7.366zm6.326-.003H9.31v-3.704c0-.9.015-1.453.043-1.66a2.17 2.17 0 00-.122-.746c-.105-.21-.296-.3-.573-.3-.329 0-.555.122-.678.364-.124.243-.185.75-.185 1.52v4.526H5.96V8.26h1.797v.858c.27-.31.53-.535.78-.67.253-.137.564-.205.934-.205.405 0 .74.09 1 .27.265.18.45.406.558.678.107.273.16.798.16 1.575v4.857h.001zm6.008-2.835c0 .685-.02 1.17-.062 1.453-.04.284-.14.54-.296.77-.154.227-.375.404-.66.528-.284.123-.605.186-.965.186-.36 0-.66-.046-.905-.137-.246-.09-.454-.227-.628-.405a1.16 1.16 0 01-.287-.466c-.067-.18-.107-.494-.12-.944l-.01-.823V11.22c0-.727.057-1.24.172-1.545.114-.304.35-.565.707-.782.36-.218.793-.327 1.297-.327.467 0 .86.085 1.18.253.32.17.548.39.684.663.136.272.213.574.232.904.02.33.028.926.028 1.788v.78h-2.77v1.4c0 .464.02.747.063.848a.3.3 0 00.295.187c.18 0 .29-.06.337-.18.046-.12.07-.4.07-.84v-.8h2.005v.348h-.003zm5.404 2.835h-2.16v-.637c-.21.252-.432.44-.663.563a1.413 1.413 0 01-.684.185c-.286 0-.56-.105-.81-.314-.252-.21-.39-.523-.39-.938V9.897c0-.58.128-.995.385-1.246.257-.252.565-.378.92-.378.324 0 .598.065.823.197.224.132.438.355.642.667V8.26h1.936v7.363z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject">
+                                <option value="general">General Inquiry</option>
+                                <option value="booking">Booking Request</option>
+                                <option value="audition">Audition</option>
+                                <option value="press">Press/Media</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-logo">Actor Name</p>
+                <p class="footer-tagline">Film | Television | Theater</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Twitter">X</a>
+                    <a href="#" aria-label="IMDb">IMDb</a>
+                </div>
+                <p class="footer-copyright">&copy; 2026 Actor Name. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox for Gallery -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Close">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous">&lsaquo;</button>
+        <button class="lightbox-next" aria-label="Next">&rsaquo;</button>
+        <div class="lightbox-content">
+            <div class="lightbox-image"></div>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.init();
+    Gallery.init();
+    Lightbox.init();
+    ContactForm.init();
+    ScrollAnimations.init();
+    SmoothScroll.init();
+});
+
+const Navigation = {
+    navbar: null,
+    navToggle: null,
+    navMenu: null,
+    navLinks: null,
+
+    init() {
+        this.navbar = document.getElementById('navbar');
+        this.navToggle = document.getElementById('nav-toggle');
+        this.navMenu = document.getElementById('nav-menu');
+        this.navLinks = document.querySelectorAll('.nav-link');
+        if (!this.navbar || !this.navToggle || !this.navMenu) return;
+        this.bindEvents();
+        this.handleScroll();
+    },
+
+    bindEvents() {
+        this.navToggle.addEventListener('click', () => this.toggleMenu());
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', () => this.closeMenu());
+        });
+        window.addEventListener('scroll', () => this.handleScroll());
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) this.closeMenu();
+        });
+        window.addEventListener('scroll', () => this.updateActiveLink());
+    },
+
+    toggleMenu() {
+        this.navToggle.classList.toggle('active');
+        this.navMenu.classList.toggle('active');
+        document.body.style.overflow = this.navMenu.classList.contains('active') ? 'hidden' : '';
+    },
+
+    closeMenu() {
+        this.navToggle.classList.remove('active');
+        this.navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    },
+
+    handleScroll() {
+        if (window.scrollY > 50) {
+            this.navbar.classList.add('scrolled');
+        } else {
+            this.navbar.classList.remove('scrolled');
+        }
+    },
+
+    updateActiveLink() {
+        const sections = document.querySelectorAll('section[id]');
+        const scrollPosition = window.scrollY + 100;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                this.navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+};
+
+const Gallery = {
+    filterButtons: null,
+    galleryItems: null,
+
+    init() {
+        this.filterButtons = document.querySelectorAll('.filter-btn');
+        this.galleryItems = document.querySelectorAll('.gallery-item');
+        if (this.filterButtons.length === 0) return;
+        this.bindEvents();
+    },
+
+    bindEvents() {
+        this.filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => this.filterGallery(e));
+        });
+    },
+
+    filterGallery(e) {
+        const filter = e.target.dataset.filter;
+        this.filterButtons.forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+        this.galleryItems.forEach(item => {
+            const category = item.dataset.category;
+            if (filter === 'all' || category === filter) {
+                item.classList.remove('hidden');
+                item.style.animation = 'fadeInUp 0.5s ease forwards';
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    }
+};
+
+const Lightbox = {
+    lightbox: null,
+    lightboxImage: null,
+    currentIndex: 0,
+    galleryItems: [],
+
+    init() {
+        this.lightbox = document.getElementById('lightbox');
+        this.lightboxImage = this.lightbox?.querySelector('.lightbox-image');
+        this.galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+        if (!this.lightbox || this.galleryItems.length === 0) return;
+        this.bindEvents();
+    },
+
+    bindEvents() {
+        this.galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => this.open(index));
+        });
+        this.lightbox.querySelector('.lightbox-close')?.addEventListener('click', () => this.close());
+        this.lightbox.querySelector('.lightbox-prev')?.addEventListener('click', () => this.prev());
+        this.lightbox.querySelector('.lightbox-next')?.addEventListener('click', () => this.next());
+        this.lightbox.addEventListener('click', (e) => {
+            if (e.target === this.lightbox) this.close();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (!this.lightbox.classList.contains('active')) return;
+            switch (e.key) {
+                case 'Escape': this.close(); break;
+                case 'ArrowLeft': this.prev(); break;
+                case 'ArrowRight': this.next(); break;
+            }
+        });
+    },
+
+    open(index) {
+        const visibleItems = this.galleryItems.filter(item => !item.classList.contains('hidden'));
+        this.currentIndex = visibleItems.indexOf(this.galleryItems[index]);
+        if (this.currentIndex === -1) this.currentIndex = 0;
+        this.updateImage(visibleItems);
+        this.lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    },
+
+    close() {
+        this.lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    },
+
+    prev() {
+        const visibleItems = this.galleryItems.filter(item => !item.classList.contains('hidden'));
+        this.currentIndex = (this.currentIndex - 1 + visibleItems.length) % visibleItems.length;
+        this.updateImage(visibleItems);
+    },
+
+    next() {
+        const visibleItems = this.galleryItems.filter(item => !item.classList.contains('hidden'));
+        this.currentIndex = (this.currentIndex + 1) % visibleItems.length;
+        this.updateImage(visibleItems);
+    },
+
+    updateImage(visibleItems) {
+        const item = visibleItems[this.currentIndex];
+        const placeholder = item.querySelector('.image-placeholder span');
+        const text = placeholder ? placeholder.textContent : 'Gallery Image';
+        this.lightboxImage.innerHTML = text;
+    }
+};
+
+const ContactForm = {
+    form: null,
+
+    init() {
+        this.form = document.getElementById('contact-form');
+        if (!this.form) return;
+        this.bindEvents();
+    },
+
+    bindEvents() {
+        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        const inputs = this.form.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => this.validateField(input));
+            input.addEventListener('input', () => this.clearError(input));
+        });
+    },
+
+    handleSubmit(e) {
+        e.preventDefault();
+        let isValid = true;
+        const requiredFields = this.form.querySelectorAll('[required]');
+        requiredFields.forEach(field => {
+            if (!this.validateField(field)) isValid = false;
+        });
+        if (!isValid) return;
+        const submitBtn = this.form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        setTimeout(() => {
+            this.showSuccess();
+            this.form.reset();
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }, 1500);
+    },
+
+    validateField(field) {
+        const value = field.value.trim();
+        let isValid = true;
+        if (field.required && !value) {
+            this.showError(field, 'This field is required');
+            isValid = false;
+        } else if (field.type === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                this.showError(field, 'Please enter a valid email address');
+                isValid = false;
+            }
+        }
+        if (isValid) this.clearError(field);
+        return isValid;
+    },
+
+    showError(field, message) {
+        this.clearError(field);
+        field.style.borderColor = '#e74c3c';
+        const error = document.createElement('span');
+        error.className = 'error-message';
+        error.textContent = message;
+        error.style.cssText = 'color: #e74c3c; font-size: 0.8rem; margin-top: 0.25rem; display: block;';
+        field.parentNode.appendChild(error);
+    },
+
+    clearError(field) {
+        field.style.borderColor = '';
+        const error = field.parentNode.querySelector('.error-message');
+        if (error) error.remove();
+    },
+
+    showSuccess() {
+        const message = document.createElement('div');
+        message.className = 'success-message';
+        message.innerHTML = '<div style="background: #2ecc71; color: white; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; text-align: center;">Thank you for your message! I\'ll get back to you soon.</div>';
+        this.form.insertBefore(message, this.form.firstChild);
+        setTimeout(() => message.remove(), 5000);
+    }
+};
+
+const ScrollAnimations = {
+    init() {
+        const elementsToAnimate = document.querySelectorAll('.about-content, .resume-category, .reel-container, .additional-reels, .gallery-grid, .contact-info, .contact-form-wrapper');
+        elementsToAnimate.forEach(el => el.classList.add('fade-in'));
+        const animatedElements = document.querySelectorAll('.fade-in');
+        if (animatedElements.length === 0) return;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        animatedElements.forEach(el => observer.observe(el));
+    }
+};
+
+const SmoothScroll = {
+    init() {
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href === '#') return;
+                const target = document.querySelector(href);
+                if (!target) return;
+                e.preventDefault();
+                const navbarHeight = document.getElementById('navbar')?.offsetHeight || 0;
+                const targetPosition = target.offsetTop - navbarHeight;
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            });
+        });
+    }
+};
+
+document.querySelectorAll('.play-button, .play-button-small').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        alert('Replace this placeholder with your actual demo reel video (YouTube, Vimeo, etc.)');
+    });
+});
+    </script>
+</body>
+</html>
