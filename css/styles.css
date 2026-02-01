@@ -572,6 +572,72 @@ ul {
     border: none;
 }
 
+/* Video Thumbnails with Play Button */
+.video-thumbnail-link {
+    display: block;
+    text-decoration: none;
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.video-thumbnail:hover img {
+    transform: scale(1.02);
+}
+
+.play-button-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+}
+
+.play-button-overlay .play-bg {
+    transition: fill 0.3s ease;
+}
+
+.video-thumbnail:hover .play-button-overlay .play-bg {
+    fill: #cc0000;
+}
+
+.video-thumbnail-small {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+
+.video-thumbnail-small img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.video-thumbnail-small:hover img {
+    transform: scale(1.02);
+}
+
+.video-thumbnail-small:hover .play-button-overlay .play-bg {
+    fill: #cc0000;
+}
+
 .video-placeholder {
     position: absolute;
     inset: 0;
