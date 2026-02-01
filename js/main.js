@@ -267,7 +267,6 @@ const ContactForm = {
         e.preventDefault();
 
         const formData = new FormData(this.form);
-        const data = Object.fromEntries(formData);
 
         // Validate all fields
         let isValid = true;
@@ -280,24 +279,24 @@ const ContactForm = {
 
         if (!isValid) return;
 
-        // Construct mailto link
-        const recipientEmail = 'philipwkramer@gmail.com';
-        const subject = `PHILIP KRAMER ACTING SITE FORM SUBMISSION: ${data.name}`;
-        const body = `Name: ${data.name}
-Email: ${data.email}
-Subject: ${data.subject}
-
-Message:
-${data.message}`;
-
-        const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-        // Open email client
-        window.location.href = mailtoLink;
-
-        // Show success message and reset form
-        this.showSuccess();
-        this.form.reset();
+        // Submit to Netlify Forms
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
+        })
+        .then(response => {
+            if (response.ok) {
+                this.showSuccess();
+                this.form.reset();
+            } else {
+                this.showError(this.form.querySelector('button'), 'Something went wrong. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Form submission error:', error);
+            this.showError(this.form.querySelector('button'), 'Something went wrong. Please try again.');
+        });
     },
 
     validateField(field) {
