@@ -406,7 +406,7 @@ const VideoCarousel = {
     startAutoPlay() {
         this.autoPlayInterval = setInterval(() => {
             this.goTo((this.currentIndex + 1) % this.slides.length);
-        }, 5000);
+        }, 7000);
     },
 
     resetAutoPlay() {

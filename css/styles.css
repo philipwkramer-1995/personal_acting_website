@@ -753,7 +753,7 @@ ul {
 
 /* ===== VIDEO CAROUSEL ===== */
 .video-carousel {
-    max-width: 900px;
+    max-width: 630px;
     margin: 3rem auto 0;
     position: relative;
 }
@@ -762,33 +762,71 @@ ul {
     position: relative;
     overflow: hidden;
     border-radius: 4px;
+    aspect-ratio: 16/9;
 }
 
 .carousel-slide {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 0;
 }
 
 .carousel-slide.active {
-    display: block;
+    opacity: 1;
+    z-index: 1;
+}
+
+.carousel-title {
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: 0.6rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.carousel-fade-left,
+.carousel-fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.carousel-fade-left {
+    left: 0;
+    background: linear-gradient(to right, rgba(255,255,255,0.9), transparent);
+}
+
+.carousel-fade-right {
+    right: 0;
+    background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
 }
 
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    width: 48px;
-    height: 48px;
-    font-size: 1.8rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
     cursor: pointer;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background 0.3s ease;
-    z-index: 2;
+    z-index: 3;
 }
 
 .carousel-btn:hover {
@@ -796,11 +834,11 @@ ul {
 }
 
 .carousel-prev {
-    left: 12px;
+    left: 8px;
 }
 
 .carousel-next {
-    right: 12px;
+    right: 8px;
 }
 
 .carousel-dots {
@@ -811,8 +849,8 @@ ul {
 }
 
 .carousel-dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     border: 2px solid var(--color-accent);
     background: transparent;
