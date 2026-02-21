@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ContactForm.init();
     ScrollAnimations.init();
     SmoothScroll.init();
+    VideoCarousel.init();
 });
 
 /**
@@ -354,6 +355,67 @@ const ContactForm = {
 };
 
 /**
+ * Video Carousel Module
+ * Handles rotating video carousel with prev/next and dot navigation
+ */
+const VideoCarousel = {
+    slides: null,
+    dots: null,
+    currentIndex: 0,
+    autoPlayInterval: null,
+
+    init() {
+        const carousel = document.getElementById('video-carousel');
+        if (!carousel) return;
+
+        this.slides = carousel.querySelectorAll('.carousel-slide');
+        this.dots = carousel.querySelectorAll('.carousel-dot');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+
+        if (this.slides.length === 0) return;
+
+        prevBtn?.addEventListener('click', () => {
+            this.goTo((this.currentIndex - 1 + this.slides.length) % this.slides.length);
+            this.resetAutoPlay();
+        });
+
+        nextBtn?.addEventListener('click', () => {
+            this.goTo((this.currentIndex + 1) % this.slides.length);
+            this.resetAutoPlay();
+        });
+
+        this.dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                this.goTo(parseInt(dot.dataset.index));
+                this.resetAutoPlay();
+            });
+        });
+
+        this.startAutoPlay();
+    },
+
+    goTo(index) {
+        this.slides[this.currentIndex].classList.remove('active');
+        this.dots[this.currentIndex].classList.remove('active');
+        this.currentIndex = index;
+        this.slides[this.currentIndex].classList.add('active');
+        this.dots[this.currentIndex].classList.add('active');
+    },
+
+    startAutoPlay() {
+        this.autoPlayInterval = setInterval(() => {
+            this.goTo((this.currentIndex + 1) % this.slides.length);
+        }, 5000);
+    },
+
+    resetAutoPlay() {
+        clearInterval(this.autoPlayInterval);
+        this.startAutoPlay();
+    }
+};
+
+/**
  * Scroll Animations Module
  * Handles fade-in animations on scroll
  */
@@ -364,7 +426,7 @@ const ScrollAnimations = {
     init() {
         // Add fade-in class to elements that should animate
         const elementsToAnimate = document.querySelectorAll(
-            '.about-content, .resume-category, .reel-container, .additional-reels, ' +
+            '.about-content, .resume-category, .video-carousel, ' +
             '.gallery-grid, .contact-info, .contact-form-wrapper'
         );
 

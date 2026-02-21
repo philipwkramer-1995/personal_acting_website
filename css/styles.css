@@ -751,6 +751,80 @@ ul {
     text-align: center;
 }
 
+/* ===== VIDEO CAROUSEL ===== */
+.video-carousel {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    position: relative;
+}
+
+.carousel-track {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.carousel-slide {
+    display: none;
+}
+
+.carousel-slide.active {
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    z-index: 2;
+}
+
+.carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.carousel-prev {
+    left: 12px;
+}
+
+.carousel-next {
+    right: 12px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1.2rem;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--color-accent);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    padding: 0;
+}
+
+.carousel-dot.active {
+    background: var(--color-accent);
+}
+
 /* ===== GALLERY SECTION ===== */
 .gallery-filter {
     display: flex;
