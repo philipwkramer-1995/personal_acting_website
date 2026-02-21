@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ContactForm.init();
     ScrollAnimations.init();
     SmoothScroll.init();
-    VideoCarousel.init();
+    VideoMarquee.init();
 });
 
 /**
@@ -355,63 +355,23 @@ const ContactForm = {
 };
 
 /**
- * Video Carousel Module
- * Handles rotating video carousel with prev/next and dot navigation
+ * Video Marquee Module
+ * Duplicates items for seamless infinite horizontal scroll
  */
-const VideoCarousel = {
-    slides: null,
-    dots: null,
-    currentIndex: 0,
-    autoPlayInterval: null,
-
+const VideoMarquee = {
     init() {
-        const carousel = document.getElementById('video-carousel');
-        if (!carousel) return;
+        const marquee = document.getElementById('video-marquee');
+        if (!marquee) return;
 
-        this.slides = carousel.querySelectorAll('.carousel-slide');
-        this.dots = carousel.querySelectorAll('.carousel-dot');
-        const prevBtn = carousel.querySelector('.carousel-prev');
-        const nextBtn = carousel.querySelector('.carousel-next');
+        const track = marquee.querySelector('.marquee-track');
+        if (!track) return;
 
-        if (this.slides.length === 0) return;
-
-        prevBtn?.addEventListener('click', () => {
-            this.goTo((this.currentIndex - 1 + this.slides.length) % this.slides.length);
-            this.resetAutoPlay();
+        // Duplicate all items for seamless loop
+        const items = track.querySelectorAll('.marquee-item');
+        items.forEach(item => {
+            const clone = item.cloneNode(true);
+            track.appendChild(clone);
         });
-
-        nextBtn?.addEventListener('click', () => {
-            this.goTo((this.currentIndex + 1) % this.slides.length);
-            this.resetAutoPlay();
-        });
-
-        this.dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                this.goTo(parseInt(dot.dataset.index));
-                this.resetAutoPlay();
-            });
-        });
-
-        this.startAutoPlay();
-    },
-
-    goTo(index) {
-        this.slides[this.currentIndex].classList.remove('active');
-        this.dots[this.currentIndex].classList.remove('active');
-        this.currentIndex = index;
-        this.slides[this.currentIndex].classList.add('active');
-        this.dots[this.currentIndex].classList.add('active');
-    },
-
-    startAutoPlay() {
-        this.autoPlayInterval = setInterval(() => {
-            this.goTo((this.currentIndex + 1) % this.slides.length);
-        }, 7000);
-    },
-
-    resetAutoPlay() {
-        clearInterval(this.autoPlayInterval);
-        this.startAutoPlay();
     }
 };
 
@@ -426,7 +386,7 @@ const ScrollAnimations = {
     init() {
         // Add fade-in class to elements that should animate
         const elementsToAnimate = document.querySelectorAll(
-            '.about-content, .resume-category, .video-carousel, ' +
+            '.about-content, .resume-category, .video-marquee, ' +
             '.gallery-grid, .contact-info, .contact-form-wrapper'
         );
 
